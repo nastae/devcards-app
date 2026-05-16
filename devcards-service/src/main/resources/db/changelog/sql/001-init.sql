@@ -9,3 +9,10 @@ CREATE TABLE flashcards (
     study_day       VARCHAR(20) NOT NULL,
     deleted         BOOLEAN NOT NULL DEFAULT FALSE
 );
+
+--changeset aurimas.golotylecas:002
+CREATE TABLE feedbacks (
+    id BIGSERIAL    PRIMARY KEY,
+    message         VARCHAR(500) NOT NULL,
+    created_at      TIMESTAMP NOT NULL
+)

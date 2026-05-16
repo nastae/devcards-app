@@ -7,7 +7,6 @@ import com.devcards.devcards_service.repository.FlashcardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -27,7 +26,15 @@ public class StudyService {
                 ? StudyDay.MONDAY
                 : StudyDay.TUESDAY;
 
-        return flashcardRepository.findTop5ByStudyDayAndDeletedFalse(studyDay)
+//        TODO:
+//          For flashcards apps (like Anki-style systems):
+//          Don’t use random at all.
+//          Use:
+//          Spaced repetition logic:
+//            WHERE next_review_date <= NOW()
+//            ORDER BY priority DESC
+//            LIMIT 5;
+        return flashcardRepository.findRandom5ByStudyDay(studyDay.toString())
                 .stream()
                 .map(flashcardMapper::toResponse)
                 .toList();
