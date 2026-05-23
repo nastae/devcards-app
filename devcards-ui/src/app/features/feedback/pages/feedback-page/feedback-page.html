@@ -1,5 +1,44 @@
 <div class="page">
-    <h1>Feedback</h1>
+    <h1>💬 Feedback</h1>
 
-    <p>Feedback form will appear here</p>
+    <!-- <p>Feedback form will appear here</p> -->
+
+    <p class="subtitle">
+        Tell us what to improve
+    </p>
+
+    <form
+        [formGroup]="form"
+        (ngSubmit)="submit()">
+
+        <mat-form-field
+            appearance="outline"
+            class="full-width">
+            <mat-label>Your feedback</mat-label>
+        
+            <textarea
+                matInput
+                rows="5"
+                formControlName="message"
+                placeholder="Write your feedback...">
+            </textarea>
+
+            @if (form.get('message')?.hasError('required')) {
+                <mat-error>Message is required</mat-error>
+            }
+
+            @if (form.get('message')?.hasError('minLength')) {
+                <mat-error>Minimum 5 characters</mat-error>
+            }
+        </mat-form-field>
+
+        <button
+            mat-raised-button
+            color="primary"
+            class="submit-btn"
+            type="submit"
+            [disabled]="form.invalid">
+            Send Feedback
+        </button>
+    </form>
 </div>
