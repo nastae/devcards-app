@@ -1,0 +1,20 @@
+<nav class="bottom-nav">
+    
+    <button 
+        mat-button
+        routerLink="/study"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }">
+        <mat-icon>school</mat-icon>
+        <span>Study</span>
+    </button>
+
+    <button
+        mat-button
+        routerLink="/feedback"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }">
+        <mat-icon>feedback</mat-icon>
+        <span>Feedback</span>
+    </button>
+</nav>
