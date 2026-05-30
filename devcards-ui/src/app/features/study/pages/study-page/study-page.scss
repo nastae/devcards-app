@@ -1,0 +1,114 @@
+.study-container {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.start-screen {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.loading {
+    margin-top: 40px;
+}
+
+.study-view {
+    width: 100%;
+    max-width: 420px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.card-wrapper {
+    perspective: 1000px;
+    margin-top: 20px;
+    margin-bottom: 8px;
+}
+
+.flip-card {
+    width: 100%;
+    height: 340px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+}
+
+.flip-card.flipped {
+    transform: rotateY(180deg);
+}
+
+.card {
+    position: absolute;
+    // width: 100%;
+    // height: 100%;
+    inset: 0;
+    backface-visibility: hidden;
+    border-radius: 16px;
+    background: white;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 15);
+    padding: 16px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.back {
+    transform: rotateY(180deg);
+}
+
+.card-image {
+    max-width: 100%;
+    max-height: 140px;
+    object-fit: contain;
+    margin-bottom: 12px;
+}
+
+.text {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.hint {
+    font-size: 12px;
+    color: gray;
+    margin-bottom: 8px;
+}
+
+// TODO: either this or Make actions sticky at bottom (like Anki)
+.actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 32px;
+    gap: 8px;
+}
+
+.card-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+    gap: 12px;
+}
+
+// .card-navigation button:first-child {
+//     flex: 1;
+// }
+
+.previous-btn {
+    flex: 1;
+}
+
+.next-btn {
+    flex: 2;
+}
+
+// .next-btn {
+//     width: 100%;
+//     margin-top: 12px;
+// }

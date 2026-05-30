@@ -1,5 +1,90 @@
-<div class="page">
+<!-- <div class="page">
     <h1>Study</h1>
 
     <p>Flashcards will appear here.</p>
+</div> -->
+
+<div class="study-container">
+
+    <!-- START SCREEN -->
+     @if (!started) {
+        <div class="start-screen">
+            <h2>Study Dev Cards</h2>
+
+            <button 
+                mat-raised-button
+                color="primary"
+                (click)="startLearning()">
+                Start Learning
+            </button>
+        </div>
+     }
+
+     <!-- TODO: maybe add signals to load data when data arrives, ecause now need to re-render (double press on Study menu option) UI to get card -->
+     <!-- LOADING -->
+    @if (loading()) {
+        <div class="loading">
+            <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+        </div>
+    }
+
+    <!-- FLASHCARD VIEW -->
+    @if (started && !loading() && currentCard) {
+        <div class="study-view">
+            <!-- progress -->
+             <mat-progress-bar
+                mode="determinate"
+                [value]="progress()">
+             </mat-progress-bar>
+
+             <!-- flashcard -->
+            <div class="card-wrapper" (click)="flipCard()">
+                <div class="flip-card" [class.flipped]="flipped">
+
+                    <!-- FRONT -->
+                    <div class="card front">
+                        <div class="hint">Tap to flip</div>
+                        @if (currentCard.imageUrl) {
+                            <img
+                                [src]="currentCard.imageUrl"
+                                class="card-image"/>
+
+                            <div class="text">
+                                {{ currentCard.frontText }}
+                            </div>
+                        }
+                    </div>
+
+                    <!-- BACK -->
+                     <div class="card back">
+                        <div class="hint">Tap to flip</div>
+                     
+                        <div class="text">
+                            {{ currentCard.backText }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- actions -->
+             <div class="actions">
+                <button mat-button color="warn" (click)="again()">Again</button>
+                <button mat-button (click)="hard()">Hard</button>
+                <button mat-button color="primary" (click)="good()">Good</button>
+                <button mat-button color="accent" (click)="easy()">Easy</button>
+            </div>
+
+            <div class="card-navigation">
+                <!-- TODO: rename to goPreviousCard -->
+                <button mat-stroked-button class="previous-btn" (click)="previous()" [disabled]="this.currentIndex === 0">
+                    Previous
+                </button>
+
+                <!-- TODO: rename to goNextCard -->
+                <button mat-stroked-button class="next-btn" (click)="next()">
+                    {{ isLastCard ? 'Finish' : 'Next' }}
+                </button>
+            </div>
+        </div>
+    }
 </div>
