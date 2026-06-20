@@ -7,3 +7,13 @@
 6. Sound + haptic feedback
 7. “Mastered” deck removal system
 8. Full-screen study mode (no distractions) (optional)
+
+
+### local build and run image
+
+devcards-service:
+```
+docker build -t devcards-service .
+docker run -p 8080:8080 devcards-service
+```
+
