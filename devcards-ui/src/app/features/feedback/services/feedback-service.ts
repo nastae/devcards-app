@@ -3,6 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { FeedbackRequest } from '../models/feedback-request';
 import { FeedbackResponse } from '../models/feedback-response';
 import { Observable } from 'rxjs';
+import { environments } from '../../../../environments/environments';
 
 @Injectable({
   providedIn: 'root',
@@ -11,10 +12,11 @@ export class FeedbackService {
 
   private http = inject(HttpClient);
 
-  private apiUrl = '/api/feedback';
+  private apiUrl = '/feedback';
 
   sendFeedback(request: FeedbackRequest): Observable<FeedbackResponse> {
     // return this.http.post<FeedbackResponse>(this.apiUrl, request);
-    return this.http.post<FeedbackResponse>('http://localhost:8080/api/feedback', request);
+    // return this.http.post<FeedbackResponse>('http://localhost:8080/api/feedback', request);
+    return this.http.post<FeedbackResponse>(environments.apiUrl + this.apiUrl, request);
   }
 }

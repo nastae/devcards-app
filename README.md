@@ -17,3 +17,8 @@ docker build -t devcards-service .
 docker run -p 8080:8080 devcards-service
 ```
 
+### how to run production angular?
+
+```
+npm run start:prod
+```
